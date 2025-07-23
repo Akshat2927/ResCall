@@ -1,0 +1,16 @@
+# Ignore all node_modules folders
+node_modules/
+
+# React/Node build folder
+frontend/build/
+
+# Spring Boot generated files
+backend/target/
+backend/.idea/
+backend/.classpath
+backend/.project
+
+# OS/editor files
+.DS_Store
+*.log
+
