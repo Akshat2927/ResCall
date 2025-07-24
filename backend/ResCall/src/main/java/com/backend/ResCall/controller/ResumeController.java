@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:1234")
+@CrossOrigin(origins = "https://goel-ansh.github.io/ResCall/")
 public class ResumeController {
 
     @Autowired
