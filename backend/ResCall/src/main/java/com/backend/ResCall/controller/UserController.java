@@ -33,7 +33,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-
+    @GetMapping("/")
+    public String home(){
+        return "Application is live and running ";
+    }
+    
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
         return userRepository.save(user);
