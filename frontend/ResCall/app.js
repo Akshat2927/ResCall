@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/register", {
+        const response = await fetch("https://rescall.onrender.com/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, password }),
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/login", {
+        const response = await fetch("https://rescall.onrender.com/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const refreshToken = localStorage.getItem("refreshToken");
     if (!refreshToken) throw new Error("No refresh token found");
 
-    const response = await fetch("http://localhost:8080/refresh", {
+    const response = await fetch("https://rescall.onrender.com/refresh", {
       method: "POST",
       headers: { "Content-Type": "text/plain" },
       body: refreshToken
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         // 1️⃣ Upload resume
-        let uploadResponse = await fetchWithAuth("http://localhost:8080/upload", {
+        let uploadResponse = await fetchWithAuth("https://rescall.onrender.com/upload", {
           method: "POST",
           body: formData,
         });
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
 
-      const response = await fetch("http://localhost:8080/analyze", {
+      const response = await fetch("https://rescall.onrender.com/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
