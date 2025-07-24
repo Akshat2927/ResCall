@@ -39,16 +39,37 @@ public class GeminiAIService {
 
     public Mono<MatchResponseDTO> analyzeResume(String resumeText, String jobDescription) {
         String prompt =
-                "You are an ATS evaluator.\n\n" +
-                        "Compare the following:\n\n" +
+                "You are an ATS (Applicant Tracking System) evaluator that is EXTREMELY STRICT.\n\n" +
+
+                        "Compare the RESUME and JOB DESCRIPTION ONLY based on:\n" +
+                        "- Exact matching of required skills, tools, technologies, certifications.\n" +
+                        "- Relevant years of experience.\n" +
+                        "- Specific job titles or domain expertise.\n" +
+                        "- Soft skills ONLY if explicitly mentioned in the job description.\n\n" +
+
+                        "SCORING RULES (VERY STRICT):\n" +
+                        "1. If the job description is vague, too short (< 15 words), or meaningless → give a LOW score (10%–20%).\n" +
+                        "2. If only a few skills match → give 30%–50%.\n" +
+                        "3. If about half of the required skills & experience match → give 50%–70%.\n" +
+                        "4. Only give 90%+ if the resume *highly* matches almost ALL required skills, tools, and responsibilities.\n" +
+                        "5. NEVER give a high score for random text like 'abcd'.\n\n" +
+
+                        "IMPORTANT:\n" +
+                        "- If the job description does not clearly mention any job-related keywords, give LOWEST possible score.\n" +
+                        "- Be realistic and conservative. Do NOT inflate the score.\n\n" +
+
                         "RESUME:\n" + resumeText + "\n\n" +
                         "JOB DESCRIPTION:\n" + jobDescription + "\n\n" +
-                        "Return ONLY valid JSON in this format:\n" +
+
+                        "Return ONLY valid JSON in EXACTLY this format:\n" +
                         "{\n" +
-                        "  \"match_score\": \"85%\",\n" +
-                        "  \"missing_keywords\": [\"skill1\", \"skill2\"],\n" +
-                        "  \"suggestions\": \"Improve by adding ...\"\n" +
-                        "}";
+                        "  \"match_score\": \"XX%\",\n" +
+                        "  \"missing_keywords\": [\"keyword1\", \"keyword2\"],\n" +
+                        "  \"suggestions\": \"Explain briefly how to improve the resume to match this job.\"\n" +
+                        "}\n\n" +
+
+                        "If the job description is unclear, too generic, or irrelevant → missing_keywords should explain that meaningful keywords are missing, and match_score MUST be very low (10–20%).";
+
 
         Map<String, Object> requestBody = Map.of(
                 "contents", List.of(
