@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 
-@CrossOrigin(origins = "http://localhost:1234")
+@CrossOrigin(origins = "https://goel-ansh.github.io/ResCall/")
 public class UserController {
 
     @Autowired
