@@ -41,7 +41,7 @@ public class SecurityConfig {
                     return config;
                 }))
                 .authorizeHttpRequests(request->request
-                        .requestMatchers("/register" , "/login" , "/refresh" , "/analyze" ).permitAll()
+                        .requestMatchers("/register" , "/login" , "/refresh" , "/analyze" , "/" ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // ✅ fix here
