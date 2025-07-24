@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .csrf(csrf ->csrf.disable())
                 .cors(cors->cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.addAllowedOrigin("http://localhost:1234");
+                    config.addAllowedOrigin("https://goel-ansh.github.io/ResCall/");
                     config.addAllowedMethod("*");
                     config.addAllowedHeader("*");
                     config.setAllowCredentials(true);
