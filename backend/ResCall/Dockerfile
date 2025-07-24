@@ -1,25 +1,22 @@
-# ✅ Use official JDK 17 image
-FROM eclipse-temurin:17-jdk
+# ✅ Use Maven with Java 21 for build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
-# ✅ Set working directory inside container
 WORKDIR /app
 
-# ✅ Copy Maven wrapper and pom.xml first (for dependency caching)
+COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
-COPY pom.xml .
+COPY src ./src
 
-# ✅ Pre-download dependencies
-RUN ./mvnw dependency:go-offline
-
-# ✅ Copy the entire source code
-COPY src src
-
-# ✅ Build the application (skip tests to speed up)
+# ✅ Build the application (skip tests for faster build)
 RUN ./mvnw clean package -DskipTests
 
-# ✅ Expose Spring Boot default port
+# ✅ Use lightweight JRE 21 to run the app
+FROM eclipse-temurin:21-jre
+
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# ✅ Run the built Spring Boot jar
-CMD ["java", "-jar", "target/*.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
