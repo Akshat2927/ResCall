@@ -43,7 +43,7 @@ public class UserController {
     
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        return userService.save(user);
+        return userService.registerUser(user);
     }
 
 
