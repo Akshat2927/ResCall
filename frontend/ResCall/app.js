@@ -1,4 +1,8 @@
+console.log("app.js script has started.");
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  console.log("DOM fully loaded and parsed. Attaching event listeners...");
 
   // ------------------- REGISTER -------------------
   const registerForm = document.querySelector("form.signup-form");
