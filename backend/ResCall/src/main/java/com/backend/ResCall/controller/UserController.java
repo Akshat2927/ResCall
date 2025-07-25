@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -40,7 +43,7 @@ public class UserController {
     
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        return userRepository.save(user);
+        return userService.save(user);
     }
 
 
