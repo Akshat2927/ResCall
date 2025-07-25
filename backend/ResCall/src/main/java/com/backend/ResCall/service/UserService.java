@@ -18,6 +18,7 @@ public class UserService {
     UserRepository userRepository;
 
     public User registerUser(User user) {
+         System.out.println(" ATTEMPTING TO REGISTER USER ");
         if(user.getEmail()==null || user.getPassword()==null || user.getName()==null){
             throw new NullPointerException("Enter the required fields");
         }else {
