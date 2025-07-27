@@ -48,7 +48,7 @@ public class GeminiAIService {
                         "- Soft skills ONLY if explicitly mentioned in the job description.\n\n" +
 
                         "SCORING RULES (VERY STRICT):\n" +
-                        "1. If the job description is vague, too short (< 15 words), or meaningless → give a LOW score (10%–20%).\n" +
+                        "1. If the job description is vague, too short (< 15 words), or meaningless → give a LOW score (0%–10%).\n" +
                         "2. If only a few skills match → give 30%–50%.\n" +
                         "3. If about half of the required skills & experience match → give 50%–70%.\n" +
                         "4. Only give 90%+ if the resume *highly* matches almost ALL required skills, tools, and responsibilities.\n" +
