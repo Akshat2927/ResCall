@@ -68,7 +68,7 @@ public class GeminiAIService {
                         "  \"suggestions\": \"Explain briefly how to improve the resume to match this job.\"\n" +
                         "}\n\n" +
 
-                        "If the job description is unclear, too generic, or irrelevant → missing_keywords should explain that meaningful keywords are missing, and match_score MUST be very low (10–20%).";
+                        "If the job description is unclear, too generic, or irrelevant → missing_keywords should explain that meaningful keywords are missing, and match_score MUST be very low (0–10%).";
 
 
         Map<String, Object> requestBody = Map.of(
